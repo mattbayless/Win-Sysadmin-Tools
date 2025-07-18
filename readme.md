@@ -11,7 +11,7 @@ Find-ADUser "john doe" -Properties Office,Title
 Find-ADComputer -AssetTag 12345 -Properties whenChanged
 ```
 
-## [Connect-CMRemoteControlSession](ConfigMgr/CMRC.ps1)
+## [Connect-CMRemoteControlSession](ConfigurationManager/CMRC.ps1)
 Launches a Configuration Manager Remote Control Viewer connection by device name or asset tag.
 Requires the ConfigurationManager module.
 ```powershell
@@ -20,7 +20,7 @@ Connect-CMRemoteControlSession -DeviceName "laptop-12345"
 cmrc -AssetTag 12345
 ```
 
-## [Convert Encoded Command](General/Convert-EncodedCommand.ps1)
+## [Convert Encoded Command](PowerShell/Convert-EncodedCommand.ps1)
 Encodes and decodes Base64 strings, useful for PowerShell's `-EncodedCommand` parameter.
 ```powershell
 ConvertFrom-Base64String "SABlAGwAbABvACAAdABoAGUAcgBlACEA"
