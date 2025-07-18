@@ -1,4 +1,4 @@
-#Requires -Module ConfigurationManager
+<# #Requires -Module ConfigurationManager #Functionality moved inside Resolve-CMDevice to save load time when added to a profile #>
 
 function Connect-CMRemoteControlSession {
 	[Alias("cmrc")]
@@ -10,6 +10,14 @@ function Connect-CMRemoteControlSession {
 		[pscredential]$Credential
 	)
 	function Resolve-CMDevice {
+		if ((Get-Module).Name -notcontains 'ConfigurationManager') {
+			try {
+				Import-Module ConfigurationManager
+			}
+			catch [System.IO.FileNotFoundException] {
+				Write-Error -Message "Could not look up devices because the ConfigurationManager module is missing." -Exception $_.Exception
+			}
+		}
 		$SavedPWD = $PWD
 		Set-Location -LiteralPath "$((Get-PSDrive -PSProvider CMSite)[0]):"
 		$script:CMDevice = Get-CMDevice -Fast @args
