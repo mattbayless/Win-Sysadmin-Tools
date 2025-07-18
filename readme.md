@@ -21,9 +21,17 @@ cmrc -AssetTag 12345
 ```
 
 ## [Convert Encoded Command](General/Convert-EncodedCommand.ps1)
-Encode or decode Base64 strings, useful for PowerShell's `-EncodedCommand` parameter.
+Encodes and decodes Base64 strings, useful for PowerShell's `-EncodedCommand` parameter.
 ```powershell
 ConvertFrom-Base64String "SABlAGwAbABvACAAdABoAGUAcgBlACEA"
 
 ConvertTo-EncodedCommand "Write-Host 'Hello there!'"
+```
+
+## [Get-VMSerialNumbers](Hyper-V/Get-VMSerialNumbers.ps1)
+Retrieves the serial numbers of Hyper-V virtual machines hosted on the local machine (default) or a specified host.
+```powershell
+Get-VMSerialNumbers
+
+Get-VMSerialNumbers -HostName "VMHost-01"
 ```
